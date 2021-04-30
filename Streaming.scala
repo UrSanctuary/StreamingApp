@@ -33,7 +33,7 @@ val df  = spark
 val windowTimeSelect = df.groupBy(time_period)
 
 //print result to Kafka
-writeStream
+df.writeStream
     .format("kafka")
     .option("kafka.bootstrap.servers", "host1:port1,host2:port2")//<-- which port and host
     .option("topic", "updates")
@@ -41,5 +41,3 @@ writeStream
 
 import spark.implicits._
   }
-
-}
